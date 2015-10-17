@@ -2,15 +2,15 @@
 
 ### PHP Code Tags
 
-Always use the full `<?php ?>` to delimit PHP code, not the `<? ?>` shorthand. This is the most portable way to include PHP code on differing operating systems and setups.
+[2.1.1] Always use the full `<?php ?>` to delimit PHP code, not the `<? ?>` shorthand. This is the most portable way to include PHP code on differing operating systems and setups.
 
-For files that contain only PHP code, the closing tag (`?>`) should not be included. It is not required by PHP. Leaving this out prevents trailing white space from being accidentally injected into the output that can introduce errors in the Joomla session (see the PHP manual on [Instruction separation](http://php.net/basic-syntax.instruction-separation)).
+[2.1.1] For files that contain only PHP code, the closing tag (`?>`) should not be included. It is not required by PHP. Leaving this out prevents trailing white space from being accidentally injected into the output that can introduce errors in the Joomla session (see the PHP manual on [Instruction separation](http://php.net/basic-syntax.instruction-separation)).
 
-Files should always end with a blank new line.
+[2.1.5] Files should always end with a blank new line.
 
 ### General
 
-Pursuant to PSR-2 [Keywords and True/False/Null][]
+[2.4] Pursuant to PSR-2 [Keywords and True/False/Null][]
 
 > PHP [keywords][] MUST be in lower case.
 > The PHP constants `true`, `false`, and `null` MUST be in lower case.
@@ -20,7 +20,7 @@ Pursuant to PSR-2 [Keywords and True/False/Null][]
 
 ### Including Code
 
-Anywhere you are unconditionally including a file, use `require_once`. Anywhere you are conditionally including a file (for example, factory methods), use `include_once`. Either of these will ensure that files are included only once. They share the same file list, so you don't need to worry about mixing them. A file included with `require_once` will not be included again by `include_once`.
+[dropped] Anywhere you are unconditionally including a file, use `require_once`. Anywhere you are conditionally including a file (for example, factory methods), use `include_once`. Either of these will ensure that files are included only once. They share the same file list, so you don't need to worry about mixing them. A file included with `require_once` will not be included again by `include_once`.
 
 > **Note**
 >
@@ -29,23 +29,23 @@ Anywhere you are unconditionally including a file, use `require_once`. Anywhere 
 >
 > `require_once JPATH_COMPONENT . ’/helpers/helper.php’;`
 
-You should not enclose the filename in parentheses.
+[2.4] You should not enclose the filename in parentheses.
 
 ### E_STRICT Compatible PHP Code
 
-As of Joomla version 1.6 and for all versions of the Joomla Platform, adhering to object oriented programming practice as supported by PHP 5.3+ is required. Joomla is committed to progressively making the source code E_STRICT.
+[2] As of Joomla version 1.6 and for all versions of the Joomla Platform, adhering to object oriented programming practice as supported by PHP 5.3+ is required. Joomla is committed to progressively making the source code E_STRICT.
 
 ## Global Variables
 
-Usage of global variables should be kept to a minimum. Use OOP and factory patterns instead.
+[3.1] Usage of global variables should be kept to a minimum. Use OOP and factory patterns instead.
 
 ## Control Structures
 
-For all control structures there is a space between the keyword and an opening parenthesis, then no space either after the opening parenthesis or before the closing bracket. This is done to distinguish control keywords from function names. All control structures must contain their logic within braces.
+[5] For all control structures there is a space between the keyword and an opening parenthesis, then no space either after the opening parenthesis or before the closing bracket. This is done to distinguish control keywords from function names. All control structures must contain their logic within braces.
 
-For all all control structures, such as `if`, `else`, `do`, `for`, `foreach`, `try`, `catch`, `switch` and `while`, both the keyword starts a newline and the opening and closing braces are each put on a new line.
+[5] For all all control structures, such as `if`, `else`, `do`, `for`, `foreach`, `try`, `catch`, `switch` and `while`, both the keyword starts a newline and the opening and closing braces are each put on a new line.
 
-### An _if-else_ Example
+### [5.2] An _if-else_ Example
 
 ```php
 if ($test)
@@ -66,7 +66,7 @@ else
 }
 ```
 
-If a control structure goes over multiple lines, all lines must be indented with one tab and the closing brace must go on the same line as the last parameter.
+[5.1] If a control structure goes over multiple lines, all lines must be indented with one tab and the closing brace must go on the same line as the last parameter.
 
 ```php
 if ($test1
@@ -76,7 +76,7 @@ if ($test1
 }
 ```
 
-### A _do-while_ Example
+### [5.4] A _do-while_ Example
 
 
 ```php
@@ -87,7 +87,7 @@ do
 while ($i < 10);
 ```
 
-### A _for_ Example
+### [5.5] A _for_ Example
 
 ```php
 for ($i = 0; $i < $n; $i++)
@@ -96,7 +96,7 @@ for ($i = 0; $i < $n; $i++)
 }
 ```
 
-### A _foreach_ Example
+### [5.6] A _foreach_ Example
 
 ```php
 foreach ($rows as $index => $row)
@@ -105,7 +105,7 @@ foreach ($rows as $index => $row)
 }
 ```
 
-### A _while_ Example
+### [5.4] A _while_ Example
 
 ```php
 while (!$done)
@@ -114,7 +114,7 @@ while (!$done)
 }
 ```
 
-### A _switch_ example
+### [5.3] A _switch_ example
 
 When using a `switch` statement, the `case` keywords are indented. The `break` statement starts on a newline assuming the indent of the code within the case.
 
@@ -131,7 +131,7 @@ switch ($value)
 }
 ```
 
-## References
+## [7.2] References
 
 When using references, there should be a space before the reference operator and no space between it and the function or variable name.
 
@@ -145,7 +145,7 @@ $ref1 = &$this->sql;
 >
 > In PHP 5, reference operators are not required for objects. All objects are handled by reference.
 
-## Concatenation Spacing
+## [7.4] Concatenation Spacing
 There should always be a space before and after the concatenation operator ('.'). For example:
 
 ```php
@@ -165,7 +165,7 @@ echo JRoute::_(
 
 ## Arrays
 
-Assignments (the `=>` operator) in arrays may be aligned with tabs. When splitting array definitions onto several lines, the last value may also have a trailing comma. This is valid PHP syntax and helps to keep code diffs minimal.
+[7.1] Assignments (the `=>` operator) in arrays may be aligned with tabs. When splitting array definitions onto several lines, the last value may also have a trailing comma. This is valid PHP syntax and helps to keep code diffs minimal.
 
 For example:
 
@@ -199,7 +199,7 @@ Documentation headers for PHP and Javascript code in files, classes, class prope
 
 These "DocBlocks" borrow from the PEAR standard but have some variations specific for Joomla and the Joomla Platform.
 
-Whereas normal code indenting uses real tabs, all whitespace in a Docblock uses real spaces. This provides better readability in source code browsers. The minimum whitespace between any text elements, such as tags, variable types, variable names and tag descriptions, is two real spaces. Variable types and tag descriptions should be aligned according to the longest Docblock tag and type-plus-variable respectively.
+[8.2] Whereas normal code indenting uses real tabs, all whitespace in a Docblock uses real spaces. This provides better readability in source code browsers. The minimum whitespace between any text elements, such as tags, variable types, variable names and tag descriptions, is two real spaces. Variable types and tag descriptions should be aligned according to the longest Docblock tag and type-plus-variable respectively.
 
 If the `@package` tag is used, it will be "Joomla.Platform".
 
